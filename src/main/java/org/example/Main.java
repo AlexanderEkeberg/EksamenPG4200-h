@@ -11,22 +11,27 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException {
         List<Double> alcoholValues = ReadCsvFiles.getAllAlcoholValues();
+        List<Double> insert = ReadCsvFiles.getAllAlcoholValues();
+        System.out.println("\n=== After Bubble Sort ===");
 
-
-        // problem 1
-        Problem1.bubbleSortOptimized(alcoholValues);
-        System.out.println("\n=== Optimized Bubble Sort ===");
-        System.out.println(Arrays.toString(alcoholValues.toArray()));
-
+        long start = System.nanoTime();
         Problem1.bubbleSortNonOptimized(alcoholValues);
-        System.out.println("\n=== Non Optimized Bubble Sort ===");
+        long end = System.nanoTime();
+
         System.out.println(Arrays.toString(alcoholValues.toArray()));
+        double timeMs = (end - start) / 1_000_000.0;
+        System.out.printf("Bubble sort took %.3f ms%n", timeMs);
 
-
-        // problem 2
-        Problem2.insertionSort(alcoholValues);
+        // === Problem 2: Insertion Sort ===
         System.out.println("\n=== After Insertion Sort ===");
-        System.out.println(Arrays.toString(alcoholValues.toArray()));
+
+        long start2 = System.nanoTime();
+        Problem2.insertionSort(insert);
+        long end2 = System.nanoTime();
+
+        System.out.println(Arrays.toString(insert.toArray()));
+        double timeMs2 = (end2 - start2) / 1_000_000.0;
+        System.out.printf("Insertion sort took %.3f ms%n", timeMs2);
 
         // problem 3
 
