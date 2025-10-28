@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Problem1 {
 
-    public static void bubbleSort(List<Double> arr) {
+    public static void bubbleSortOptimized(List<Double> arr) {
         int n = arr.size();
         boolean swapped;
 
@@ -21,6 +21,21 @@ public class Problem1 {
             }
             if (!swapped) break;
         }
+    }
+
+    public static void bubbleSortNonOptimized(List<Double> arr) {
+        int n = arr.size();
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr.get(j) > arr.get(j + 1)) {
+                    double temp = arr.get(j);
+                    arr.set(j, arr.get(j + 1));
+                    arr.set(j + 1, temp);
+                }
+            }
+        }
+
     }
 
 
