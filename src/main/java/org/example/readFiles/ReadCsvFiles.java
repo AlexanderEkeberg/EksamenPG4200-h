@@ -10,7 +10,6 @@ import java.util.List;
 
 public class ReadCsvFiles {
 
-    // Leser "alcohol"-kolonnen fra én fil
     private static List<Double> readAlcoholColumn(String filename) throws IOException {
         List<Double> values = new ArrayList<>();
 
@@ -20,13 +19,13 @@ public class ReadCsvFiles {
             }
 
             try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
-                String header = br.readLine(); // Leser første linje (kolonnenavn)
+                String header = br.readLine();
                 if (header == null) return values;
 
                 String[] cols = header.split(";");
                 int alcoholIndex = -1;
 
-                // Finn kolonnen "alcohol"
+
                 for (int i = 0; i < cols.length; i++) {
                     if (cols[i].replace("\"", "").trim().toLowerCase().contains("alcohol")) {
                         alcoholIndex = i;
@@ -59,7 +58,7 @@ public class ReadCsvFiles {
         return values;
     }
 
-    // Leser begge filene og kombinerer alt i én liste
+
     public static List<Double> getAllAlcoholValues() throws IOException {
         List<Double> all = new ArrayList<>();
         all.addAll(readAlcoholColumn("winequality-red.csv"));

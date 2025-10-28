@@ -28,16 +28,18 @@ public class Problem2 {
 
     public static void execute() {
         try {
-            double[] alcoholValues = ReadCsvFiles.getAllAlcoholValues();
+            List<Double> alcoholList = ReadCsvFiles.getAllAlcoholValues();
+
+            double[] alcoholArray = alcoholList.stream().mapToDouble(Double::doubleValue).toArray();
 
             Problem2 sorter = new Problem2();
-            sorter.sort(alcoholValues);
+            sorter.sort(alcoholArray);
 
-            System.out.println("Sorted alcohol content values (ascending):");
-            printArray(alcoholValues);
+            System.out.println("Sorted alcohol content values: ");
+            printArray(alcoholArray);
 
         } catch (IOException e) {
-            System.out.println("Error reading wine data: " + e.getMessage());
+            System.out.println("Error reading files: " + e.getMessage());
         }
     }
 }
