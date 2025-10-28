@@ -1,8 +1,10 @@
 package org.example;
 
 import org.example.readFiles.ReadCsvFiles;
+import org.example.tasks.Problem1;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -10,6 +12,10 @@ public class Main {
         List<Double> alcoholValues = ReadCsvFiles.getAllAlcoholValues();
 
         // problem 1
+        Problem1.bubbleSort(alcoholValues);
+
+        System.out.println("\n=== Etter sortering ===");
+        System.out.println(Arrays.toString(alcoholValues.toArray()));
 
         // problem 2
 
