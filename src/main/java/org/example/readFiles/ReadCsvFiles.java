@@ -47,7 +47,6 @@ public class ReadCsvFiles {
                             try {
                                 values.add(Double.parseDouble(value));
                             } catch (NumberFormatException ignored) {
-                                // Hopper over ugyldige tall
                             }
                         }
                     }
